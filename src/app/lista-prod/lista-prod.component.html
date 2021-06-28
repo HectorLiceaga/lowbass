@@ -1,0 +1,23 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Imagen</th>
+          <th scope="col">Instrumento</th>
+          <th scope="col">Precio U$D</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td><img [src]="instrumento1.image" class="rounded-circle img-thumbnail pequeña" [alt]="instrumento1.name"></td>
+          <td>{{instrumento1.name}}</td>
+          <td>{{instrumento1.price}}</td>
+        </tr>
+        <tr>
+            <td><img [src]="instrumento2.image" class="rounded-circle img-thumbnail pequeña" [alt]="instrumento2.name"></td>
+          <td>{{instrumento2.name}}</td>
+          <td>{{instrumento2.price}}</td>
+        </tr>
+        <tr>
+        </tr>
+      </tbody>
+</table>
