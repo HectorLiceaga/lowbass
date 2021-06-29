@@ -1,23 +1,20 @@
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Imagen</th>
-          <th scope="col">Instrumento</th>
-          <th scope="col">Precio U$D</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-            <td><img [src]="instrumento1.image" class="rounded-circle img-thumbnail pequeña" [alt]="instrumento1.name"></td>
-          <td>{{instrumento1.name}}</td>
-          <td>{{instrumento1.price}}</td>
-        </tr>
-        <tr>
-            <td><img [src]="instrumento2.image" class="rounded-circle img-thumbnail pequeña" [alt]="instrumento2.name"></td>
-          <td>{{instrumento2.name}}</td>
-          <td>{{instrumento2.price}}</td>
-        </tr>
-        <tr>
-        </tr>
-      </tbody>
+<table class="table align-middle table-striped table-hover table-borderer mb-5">
+  <thead>
+    <tr>
+      <th scope="col">Imagen</th>
+      <th scope="col">Instrumento</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Precio U$D</th>
+      <th scope="col">Disponibilidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let instrument of instruments" [ngClass]="{'forSale': instrument.forSale, 'table-success': !instrument.forSale}">
+      <td><img [src]="instrument.image" class="rounded-circle img-thumbnail pequeña" [alt]="instrument.name"></td>
+      <td>{{instrument.name}}</td>
+      <td>{{instrument.description}}</td>
+      <td>{{instrument.price | currency}}</td>
+      <td><span *ngIf="instrument.stock==0" class="badge bg-info rounded-pill text-dark">No lo tenemos, pero te lo encargamos ;)</span></td>
+    </tr>
+  </tbody>
 </table>
