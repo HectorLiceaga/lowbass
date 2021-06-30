@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Instrument } from './products';
+import { Product } from './products';
 
 @Component({
   selector: 'app-lista-prod',
@@ -9,39 +9,39 @@ import { Instrument } from './products';
 export class ListaProdComponent implements OnInit {
 
   //Mock
-  instruments: Instrument[] = [
-  {
-    name: 'Bajo Fender JazzBass',
-    description: 'Bajo hecho en mexico, un sonido elegido por los mejores, con la calidad reconocida de Fender',
-    price: 2000,
-    image: 'assets/img/fender-jazz-bass.jpg',
-    stock: 5,
-    forSale: true,
-  },
-  {
-    name: 'Guitarra Fender Stratocaster',
-    description: 'Guitarra versatil. Ideal para aprender con un producto de excelente calidad',
-    price: 1500,
-    image: 'assets\img\fender-stratocaster.jpg',
-    stock: 2,
-    forSale: false, 
-  },
-  {
-    name: 'Guitarra Fender Telecaster',
-    description: 'Terrible guitarra, un sonido ideado en los 50´s. Ideal para para rockear con todo',
-    price: 1100,
-    image: 'assets\img\fender-telecaster.jpg',
-    stock: 0,
-    forSale: false,
-  },  
-  {
-    name: 'Guitarra PRS',
-    description: 'La de Santana, Cerati.Nada más que agregar',
-    price: 3500,
-    image: 'assets\img\prs.jpeg',
-    stock: 0,
-    forSale: false,
-  }
+  products: Product[] = [
+    {
+      name: 'Pua de guitarra',
+      price: 20,
+      image: '..\assets\img\puaGuitarra.png',
+      stock: 5,
+      forSale: true,
+      quantity: 0,
+    },
+    {
+      name: 'Pua de bajo',
+      price: 30,
+      image: '..\assets\img\puaBajo.jpg',
+      stock: 2,
+      forSale: false,
+      quantity: 0,
+    },
+    {
+      name: 'Correa de cuero guitarra',
+      price: 2100,
+      image: 'src\assets\img\correaCueroGuitar.jpg',
+      stock: 0,
+      forSale: false,
+      quantity: 0,
+    },
+    {
+      name: 'Correa de cuero bajo',
+      price: 3500,
+      image: 'src\assets\img\correaCueroBass.jpg',
+      stock: 0,
+      forSale: false,
+      quantity: 0,
+    }
   ]
 
   constructor() { }
@@ -49,4 +49,13 @@ export class ListaProdComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  upQuantity(product: Product): void {
+    if (product.quantity <= product.stock)
+      product.quantity++;
+  }
+
+  downQuantity(product: Product): void {
+    if (product.quantity > 0)
+      product.quantity--;
+  }
 }

@@ -1,9 +1,9 @@
-export interface Instrument {
+export interface Product {
     name: string,
-    description: string,
     price: number,
     image: string,
     stock: number,
     forSale: boolean,
+    quantity: number,
 }
 

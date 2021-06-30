@@ -1,20 +1,30 @@
-<table class="table align-middle table-striped table-hover table-borderer mb-5">
+<table class="table table-sm align-middle table-striped table-hover table-borderer mb-5">
   <thead>
     <tr>
       <th scope="col">Imagen</th>
       <th scope="col">Instrumento</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">Precio U$D</th>
+      <th scope="col">Precio</th>
       <th scope="col">Disponibilidad</th>
+      <th scope="col">Compra</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let instrument of instruments" [ngClass]="{'forSale': instrument.forSale, 'table-success': !instrument.forSale}">
-      <td><img [src]="instrument.image" class="rounded-circle img-thumbnail pequeña" [alt]="instrument.name"></td>
-      <td>{{instrument.name}}</td>
-      <td>{{instrument.description}}</td>
-      <td>{{instrument.price | currency}}</td>
-      <td><span *ngIf="instrument.stock==0" class="badge bg-info rounded-pill text-dark">No lo tenemos, pero te lo encargamos ;)</span></td>
+    <tr *ngFor="let product of products" [ngClass]="{'forSale': product.forSale, 'table-success': !product.forSale}">
+      <td><img [src]="product.image" class="rounded-circle img-thumbnail pequeña" [alt]="product.name"></td>
+      <td>{{product.name}}</td>
+      <td>{{product.price | currency}}</td>
+      <td>
+        <span *ngIf="product.stock!=0" class="badge bg-info rounded-pill text-dark">DISPONIBLE</span>
+        <span *ngIf="product.forSale" class="badge bg-success rounded-pill text-white">EN OFERTA!!</span>
+        <span *ngIf="product.stock==0" class="badge bg-warning rounded-pill text-dark">SIN STOCK</span>
+      </td>
+      <td>
+        <div class="input-group mb-3">
+          <button class="btn btn-secondary btn-sm" (click)="upQuantity(product)">+</button>
+          <input type="text" [(ngModel)]="product.quantity">
+          <button class="btn btn-secondary btn-sm" (click)="downQuantity(product)">-</button>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>

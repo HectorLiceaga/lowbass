@@ -1,32 +1,30 @@
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold text-reset" href="#">{{title}}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link  text-reset" aria-current="page" href="#">Home</a>
+          <a class="navbar-brand fw-bold text-reset" [routerLink]="['/']">{{title}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold text-reset" [routerLink]="['/about']">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold text-reset" href="#">Link</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
+<div class="jumbotron jumbotron-fluid mb-10">
+  <div class="container-fluid text-center">
     <h1>Bienvenidos a LowBass</h1>
-    <h3>Aquí encontrarás tu próximo instrumento</h3>
+    <h3>Tu tienda online de accesorios para instrumentos de música</h3>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-8">
-      <app-lista-prod></app-lista-prod>
-    </div>
-    <div class="col-4">
-      <app-carrito></app-carrito>
-    </div>
-  </div>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
 </div>
