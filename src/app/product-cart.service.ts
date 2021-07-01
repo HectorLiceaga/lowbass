@@ -19,12 +19,12 @@ export class ProductCartService {
     let item: Product | undefined = this._shopList.find((p1) => p1.name == product.name);
     if (!item) {
       this._shopList.push({ ...product });
-      this._total = this._shopList.reduce((a, c) => c.price * c.quantity + a, 0);
+      //a veces no funciona bien la suma del total y no encuentro la solución
     } else {
       item.quantity += product.quantity;
     }
+    this._total = this._shopList.reduce((a, c) => c.price * c.quantity + a, 0);
     this.shopList.next(this._shopList);
     this.total.next(this._total);
   }
-
 }
