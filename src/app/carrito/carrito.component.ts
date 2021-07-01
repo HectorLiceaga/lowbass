@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, observable } from 'rxjs';
+import { Product } from '../lista-prod/products';
 import { ProductCartService } from '../product-cart.service';
 
 @Component({
@@ -8,7 +10,13 @@ import { ProductCartService } from '../product-cart.service';
 })
 export class CarritoComponent implements OnInit {
 
-  constructor(private cartService: ProductCartService) { }
+  shopList$: Observable<Product[]>;
+  total$: Observable<number>;
+
+  constructor(private cartService: ProductCartService) {
+    this.shopList$ = cartService.shopList.asObservable();
+    this.total$ = cartService.total.asObservable();
+  }
 
   ngOnInit(): void {
   }

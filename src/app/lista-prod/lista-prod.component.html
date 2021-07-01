@@ -14,18 +14,19 @@
       <td>{{product.name}}</td>
       <td>{{product.price | currency}}</td>
       <td>
-        <span *ngIf="product.stock!=0" class="badge bg-info rounded-pill text-dark">DISPONIBLE</span>
+        <span *ngIf="product.stock > 0" class="badge bg-info rounded-pill text-dark">DISPONIBLE</span>
         <span *ngIf="product.forSale" class="badge bg-success rounded-pill text-white">EN OFERTA!!</span>
-        <span *ngIf="product.stock==0" class="badge bg-warning rounded-pill text-dark">SIN STOCK</span>
+        <span *ngIf="product.stock<=0" class="badge bg-warning rounded-pill text-dark">SIN STOCK</span>
       </td>
       <td class="display-flex">
-        <div class="btn-toolbar" *ngIf="product.stock!=0">
+        <div *ngIf="product.stock > 0" class="btn-toolbar">
           <div class="btn-group">
             <app-input-integer [(quantity)]="product.quantity" [max]="product.stock" (maxValue)="maxReached($event)">
             </app-input-integer>
           </div>
           <div class="btn-group">
-            <button type="button" class="btn btn-outline-success" (click)="addToCart(product)">Agregar al Carrito</button>
+            <button type="button" class="btn btn-outline-success" (click)="addToCart(product)">Agregar al
+              Carrito</button>
           </div>
         </div>
       </td>

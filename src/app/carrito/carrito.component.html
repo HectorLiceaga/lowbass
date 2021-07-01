@@ -1,14 +1,22 @@
 <h3>Carrito</h3>
-  <table class="table table-sm mb-5">
+  <table class="table table-sm align-middle table-striped table-hover table-borderer mb-5">
     <thead>
       <tr>
-        <th scope="col">Producto</th>
-        <th scope="col">Precio Total</th>
+        <th scope="col">Producto X Cantidad</th>
+        <th scope="col">Precio</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>nombreProd</td>
-        <td>Precio</td>
+      <tr *ngFor="let product of shopList$ | async" [ngClass]="{'forSale': product.forSale, 'table-success': !product.forSale}">
+        <td>{{product.name}} X {{product.quantity}}</td>
+        <td>{{product.price * product.quantity | currency}}</td>
       </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Precio Total</td>
+        <td>{{total$ | async |currency}}</td>
+      </tr>
+    </tfoot>
   </table>
+

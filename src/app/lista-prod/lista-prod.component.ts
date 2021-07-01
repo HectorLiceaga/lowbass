@@ -31,8 +31,8 @@ export class ListaProdComponent implements OnInit {
       name: 'Correa de cuero guitarra',
       price: 2100,
       image: 'assets/img/correaCueroGuitar.jpg',
-      stock: 0,
-      forSale: false,
+      stock: 9,
+      forSale: true,
       quantity: 0,
     },
     {
@@ -56,5 +56,7 @@ export class ListaProdComponent implements OnInit {
 
   addToCart(product: Product): void {
     this.cartService.addToCart(product);
+    product.stock -= product.quantity;
+    product.quantity = 0;
   }
 }
