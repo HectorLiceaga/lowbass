@@ -8,6 +8,7 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { FormsModule } from '@angular/forms';
 import { LowbassComponent } from './lowbass/lowbass.component';
 import { LowbassAboutComponent } from './lowbass-about/lowbass-about.component';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { LowbassAboutComponent } from './lowbass-about/lowbass-about.component';
     ListaProdComponent,
     CarritoComponent,
     LowbassComponent,
-    LowbassAboutComponent
+    LowbassAboutComponent,
+    InputIntegerComponent
   ],
   imports: [
     BrowserModule,

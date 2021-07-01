@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductCartService } from '../product-cart.service';
 import { Product } from './products';
 
 @Component({
@@ -13,7 +14,7 @@ export class ListaProdComponent implements OnInit {
     {
       name: 'Pua de guitarra',
       price: 20,
-      image: '..\assets\img\puaGuitarra.png',
+      image: 'assets/img/puaGuitarra.png',
       stock: 5,
       forSale: true,
       quantity: 0,
@@ -21,7 +22,7 @@ export class ListaProdComponent implements OnInit {
     {
       name: 'Pua de bajo',
       price: 30,
-      image: '..\assets\img\puaBajo.jpg',
+      image: 'assets/img/puaBajo.jpg',
       stock: 2,
       forSale: false,
       quantity: 0,
@@ -29,7 +30,7 @@ export class ListaProdComponent implements OnInit {
     {
       name: 'Correa de cuero guitarra',
       price: 2100,
-      image: 'src\assets\img\correaCueroGuitar.jpg',
+      image: 'assets/img/correaCueroGuitar.jpg',
       stock: 0,
       forSale: false,
       quantity: 0,
@@ -37,25 +38,23 @@ export class ListaProdComponent implements OnInit {
     {
       name: 'Correa de cuero bajo',
       price: 3500,
-      image: 'src\assets\img\correaCueroBass.jpg',
+      image: 'assets/img/correaCueroBass.jpg',
       stock: 0,
       forSale: false,
       quantity: 0,
     }
   ]
 
-  constructor() { }
+  constructor(private cartService: ProductCartService) { }
 
   ngOnInit(): void {
   }
 
-  upQuantity(product: Product): void {
-    if (product.quantity <= product.stock)
-      product.quantity++;
+  maxReached(m: string) {
+    alert(m);
   }
 
-  downQuantity(product: Product): void {
-    if (product.quantity > 0)
-      product.quantity--;
+  addToCart(product: Product): void {
+    this.cartService.addToCart(product);
   }
 }
